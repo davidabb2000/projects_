@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina de prueba</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+
+    <h1>
+        <a href="index.html" style="text-decoration: none; color: black">David Barrientos</a>
+    </h1>
+
+    <div class="links">
+        <ul>
+            <li><a href="info.html">Mas informacion</a></li>
+            <li><a href="aboutme.html">Sobre mi</a></li>
+            <li><a href="contact.html">Contactame</a></li>
+        </ul>
+    </div>
+
+    <a href="Subscribe.html" class="subscribe-button">Proyectos</a>
+
+</header>
+
+
+<main>
+    <section class="main-projects">
+        <div>
+            <a href="https://drive.google.com/file/d/1pI2z3fWKWyARfVjiTowEMZlP-4myiBVx/view?usp=sharing" target="_blank">
+                <img src="img/freshclothes.PNG" alt="">
+                <video src="video/freshclothes.mp4" muted loop playsinline preload="auto"></video>
+                <h1>Fresh Clothes</h1>
+                <p>
+                    Proyecto de media tecnica, es una pagina de ropa, con un diseño sencillo, pero con un buen funcionamiento, es un proyecto que me gusta mucho, y que me ha ayudado a mejorar mis habilidades en el desarrollo web. Aca se pueden ver mis habilidades en HTML, CSS y, ademas de que es un proyecto que me gusta mucho, y que me ha ayudado a mejorar mis habilidades en el desarrollo web. Trabajo hecho en equipo
+                </p>
+            </a>
+        </div>
+    
+
+        <div>
+            <a href="https://abb-david.vercel.app/" target="_blank">
+                <img src="img/abbdavid.PNG" alt="">
+                <video src="video/abbdavid.mp4" muted loop playsinline preload="auto"></video>
+                <h1>ABB David (WIP)</h1>
+                <p>
+                    Proyecto de media tecnica, es una pagina de ropa, con un diseño sencillo, pero con un buen funcionamiento, es un proyecto que me gusta mucho, y que me ha ayudado a mejorar mis habilidades en el desarrollo web. Aca se pueden ver mis habilidades en HTML, CSS y, ademas de que es un proyecto que me gusta mucho, y que me ha ayudado a mejorar mis habilidades en el desarrollo web. Trabajo hecho en equipo
+                </p>
+            </a>
+        </div>
+</section>
+
+</main>
+
+
+<footer>
+
+</footer>
+
+<script>
+document.querySelectorAll('.main-projects div').forEach(div => {
+    const video = div.querySelector('video');
+    const img = div.querySelector('img');
+    if (video) {
+        div.addEventListener('mouseenter', () => {
+            video.currentTime = 0;
+            video.play().catch(e => console.log("Error:", e)); // ← muestra el error real
+        });
+        div.addEventListener('mouseleave', () => {
+            video.pause();
+        });
+    }
+});
+</script>
+
+</body>
+</html>

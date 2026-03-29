@@ -1,0 +1,214 @@
+*{
+    margin: 0;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(0deg,#aaaaaa 30%, #ffffff 100%);
+    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    animation: fadeOut 2s ease forwards;
+}
+/* Definición de la animación */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+h1{
+    font-family: "Climate Crisis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+    "YEAR" 1979;
+    font-size: 20px;
+}
+
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.links ul li a{
+    padding: 10px 20px; /*relleno horizontal 10px vertical 20px*/
+    color: black;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 15px;
+    margin-right: 10px;
+    transition: all ease 0.5s;
+    font-family: "Tinos", serif;
+    font-style: normal;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.247);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.151);
+    border-radius: 10px;
+}
+
+.links ul li a:hover {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+    transform: translateY(4px);
+}
+
+.subscribe-button {
+    font-family: "Climate Crisis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 20px;
+    transition: all ease 0.3s;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(0, 0, 0);
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+.subscribe-button:hover {
+    box-shadow: 0 0 20px black;
+    text-shadow: 0 0 2px white;
+}
+
+.links ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.main-content h1{
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    color: rgb(46, 46, 46);
+}
+
+.main-content p{
+    font-family: sans-serif;
+    color: white;
+    color: rgb(46, 46, 46);
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+    width: 700px;
+    font-weight: 550;
+    line-height: 30px;
+}
+
+.main-projects {
+    display: grid;
+    grid-template-columns: repeat(minmax(1fr));
+    margin-top: 50px;
+
+}
+
+.main-projects div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-projects div a {
+    height: 250px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 15px;
+    margin-right: 10px;
+    transition: all ease 0.5s;
+    font-family: "Tinos", serif;
+    font-style: normal;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.247);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.151);
+    border-radius: 10px;
+    position: relative;
+}
+
+.main-projects div a img{
+    height: 150px;
+    border: 2px rgba(104, 104, 104, 0.541) solid;
+    border-radius: 5px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.main-projects div:hover a img{
+    opacity: 0;
+}
+
+.main-projects div a video {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    opacity: 0;
+    height: 200px;
+    border: 2px rgba(104, 104, 104, 0.541) solid;
+    border-radius: 5px;
+    transition: opacity 0.5s ease;
+    z-index: 2; /* ← esto */
+}
+
+.main-projects div:hover a video{
+    opacity: 1;
+    border-radius: 5px;
+}
+
+.main-projects div a h1 {
+    display: inline-block;
+    position: relative;
+    height: 80px;
+    transition: all ease 0.5s;
+}
+
+.main-projects div:hover a h1 {
+    transform: translateX(50px);
+}
+
+.main-projects div a p{
+    width: 700px;
+    display: flex;
+    position: relative;
+    top: 50px;
+    font-size: 20px;
+    left: -100px;
+    font-family: "DM Sans", sans-serif;
+}
