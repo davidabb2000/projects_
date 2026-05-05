@@ -1,0 +1,80 @@
+aside {
+    margin-top: 100px;
+    height: 500px;
+    width: 300px;
+    color: black;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 15px;
+    margin-right: 10px;
+    transition: all ease 0.5s;
+    font-family: "Tinos", serif;
+    font-style: normal;
+    display: flex;
+    background-color: rgba(63, 63, 63, 0.37);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.151);
+    border-radius: 10px;
+    position: relative;
+    animation: aside 2s ease-in-out forwards 1.2s;
+    transform: translateX(-300px);
+}
+
+.profile_pic {
+    position: relative;
+    height: 200px;
+    left: 65px;
+    border-radius: 30%;
+}
+
+@keyframes text {
+    to {
+        transform: translateY(300px) translateX(30px);
+    }
+}
+
+@keyframes header {
+    from {
+        transform: translateY(-100px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes aside {
+    from {
+        transform: translateX(-300px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+.info_aside {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    width: 200px;
+    height: 100px;
+    right: 50%;
+    top: 50%
+}
+
+.info_aside img {
+    width: 80px;
+    margin: 10px;
+    z-index: 1000;
+    background-color: white;
+    padding: 4px;
+    border-radius: 5px;
+    margin-right: 70px;
+}
+
+.info_aside img:nth-child(4) {
+    position: relative;
+    height: 120px;
+    width: auto;
+    bottom: 40px;
+    right: 40px;
+}
