@@ -1,4 +1,5 @@
 aside {
+    cursor: pointer;
     margin-top: 100px;
     height: 500px;
     width: 300px;
@@ -65,16 +66,13 @@ aside {
     width: 80px;
     margin: 10px;
     z-index: 1000;
-    background-color: white;
-    padding: 4px;
+    background-color: rgba(138, 138, 138, 0.37);
+    backdrop-filter: blur(12px);
+    padding: 10px;
     border-radius: 5px;
     margin-right: 70px;
 }
 
-.info_aside img:nth-child(4) {
-    position: relative;
-    height: 120px;
-    width: auto;
-    bottom: 40px;
-    right: 40px;
+h1 {
+    cursor: pointer
 }
