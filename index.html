@@ -1,58 +1,81 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | David Barrientos</title>
+    <script>
+        if (!sessionStorage.getItem('siteVisited')) {
+            document.documentElement.classList.add('initial-load');
+            sessionStorage.setItem('siteVisited', 'true');
+        }
+    </script>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="overlay"></div>
-<header>
+    <header>
+        <div class="logo-main">
+            <a>David Barrientos.</a>
+        </div>
+        <nav class="nav-main">
+            <ul>
+                <li><a href="">
+                    <p>01</p>
+                    <img src="img/arrow-up-short.svg" alt="">
+                    <h2>Habilidades</h2>
+                </a></li>
+                <li><a href="projects.html">
+                    <p>02</p>
+                    <img src="img/arrow-up-short.svg" alt="">
+                    <h2>Proyectos</h2>
+                </a></li>
+                <li><a href="">
+                    <p>03</p>
+                    <img src="img/arrow-up-short.svg" alt="">
+                    <h2>Informacion</h2>
+                </a></li>
+                <li><a href="index.html">
+                    <p>04</p>
+                    <img src="img/arrow-up-short.svg" alt="">
+                    <h2>Sobre mi</h2>
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <article>
+                <p>
+                    Soy David, estudiante de desarrollo de software en el SENA, en Medellín, Colombia. Me dedico a construir aplicaciones web funcionales y bien pensadas, combinando conocimientos de frontend y backend para entregar soluciones completas, desde la interfaz hasta la base de datos.
+                    <br><br>
+Mi formación abarca lenguajes y tecnologías como HTML, CSS, JavaScript, PHP, Python, SQL, Django y ReactJS. Me interesa tanto el diseño de experiencias de usuario cuidadas como la lógica y estructura que sostienen una aplicación por dentro: la gestión de datos, la arquitectura del sistema y las buenas prácticas de desarrollo.
+<br><br>
+Soy una persona metódica y curiosa, que aprende constantemente y busca entender a fondo cada herramienta y cada problema antes de resolverlo. Actualmente me encuentro en búsqueda de una oportunidad de práctica o apadrinamiento donde pueda seguir desarrollando mis habilidades técnicas, aportar valor desde el primer día y crecer junto a un equipo de trabajo.
+                </p>
+                <img src="img/icon.jpg" alt="">
+            </article>
+        </section>
+    </main>
 
-    <h1 class="logo">
-        David Barrientos
-    </h1>
-
-    <nav class="links">
-        <ul>
-             <!-- <li><a href="info.html">Mas informacion</a></li>
-            <li><a href="aboutme.html">Sobre mi</a></li>
-            <li><a href="contact.html">Contactame</a></li> -->
-        </ul>
-    </nav>
-
-    <a href="projects.html" class="subscribe-button">Proyectos</a>
-
-</header>
-
-
-<main>
-    <aside>
-        <img src="img/icon.jpg" alt="David Barrientos" class="profile_pic">
-
-        
-            <div class="info_aside">
-                <img src="img/HTML5_logo_resized.svg" alt="">
-                <img src="img/css.png" alt="">
-                <img src="img/piton.png" alt="">
-                <img src="img/javascript.webp" alt="">
-            </div>
-        
-    </aside>
-</main>
-
-
-<footer>
-
-</footer>
-
+    <script>
+        document.querySelectorAll('a[href]').forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#') || link.target === '_blank') return;
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                const main = document.querySelector('main');
+                if (main) {
+                    main.classList.add('page-exit');
+                }
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 600);
+            });
+        });
+    </script>
 </body>
 </html>

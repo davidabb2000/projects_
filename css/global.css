@@ -1,119 +1,173 @@
-*{
-    margin: 0;
-    padding: 3px;
-    box-sizing: border-box;
-    
-}
-
 :root {
-    --text-color: #ffffff;
-    --bg-color1: rgb(51, 50, 50);
-    --bg-color2: #1b1b1b;
+    --primarycolor: #111827;
+    --secondarycolor: #1E293B;
+    --textcolor: #E5E7EB;
+    --accentcolor: #D6AD60;
+    --surfacecolor: rgba(226, 232, 240, 0.08);
+    --textfont: "Elms Sans", sans-serif;
 }
 
-body{
-    background: linear-gradient(0deg,var(--bg-color2) 30%, var(--bg-color1) 100%);
-    min-height: 100vh;
-    height: 100vh;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--primarycolor);
     overflow: hidden;
 }
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgb(0, 0, 0);
-    animation: fadeOut 2s ease forwards 0.5s;
-    z-index: 9999;
+
+main.page-exit {
+    animation: main-exit 0.6s ease forwards;
 }
-/* Definición de la animación */
-@keyframes fadeOut {
-    from {
+
+@keyframes main-exit {
+    0% {
         opacity: 1;
     }
-    to {
+    100% {
         opacity: 0;
-        visibility: hidden;
     }
-}
-
-
-
-h1{
-    font-family: "Climate Crisis", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings:
-    "YEAR" 1979;
-    font-size: 20px;
-    animation: text 2s ease-in-out forwards 3.5s;
-    border-radius: 5px;
 }
 
 header {
-    display: flex;
-    position: fixed;
+    position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    align-items: center;
-    justify-content: space-between;
-    animation: header 2s ease-in-out forwards 0.5s;
+    height: 100%;
+    width: 11%;
+    left: 70px;
+}
+main {
+    margin-left: 150px;
+    min-height: 100vh;
+}
+.logo-main {
+    font-family: var(--textfont);
+    font-weight: 900;
+    height: 100px;
+    width: 100px;
+    margin-top: 20px;
+    margin-left: -50px;
+    text-align: center;
 }
 
-.links ul li a{
-    padding: 10px 20px; /*relleno horizontal 10px vertical 20px*/
-    color: rgb(255, 255, 255);
+html.initial-load .logo-main {
+    animation: logo-intro 1s;
+}
+
+html.initial-load .nav-main ul li a {
+    animation: main-intro 1s ease;
+}
+
+.logo-main a {
+    color: var(--textcolor);
     text-decoration: none;
-    font-family: sans-serif;
-    font-size: 15px;
-    margin-right: 10px;
-    transition: all ease 0.5s;
-    font-family: "Tinos", serif;
-    font-style: normal;
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.247);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.151);
-    border-radius: 10px;
-}
-
-.links ul li a:hover {
-    background-color: black;
-    color: rgb(255, 255, 255);
-    border-radius: 10px;
-    box-shadow: 0 0 10px black;
-    transform: translateY(4px);
-}
-
-.subscribe-button {
-    font-family: "Climate Crisis", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
+    height: 100px;
+    width: 100px;
     font-size: 20px;
-    transition: all ease 0.3s;
-    color: rgb(245, 245, 245);
-    text-decoration: none;
-    background-color: rgb(0, 0, 0);
-    padding: 10px 30px;
-    border-radius: 10px;
+    font-weight: 900;
 }
 
-.subscribe-button:hover {
-    box-shadow: 0 0 20px black;
-    text-shadow: 0 0 2px white;
+.nav-main ul li a {
+    background-color: rgba(229, 231, 235, 0.06);
+    border: 1px solid rgba(229, 231, 235, 0.1);
 }
 
-.links ul {
-    list-style: none;
+@keyframes logo-intro {
+
+    10% {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        filter: opacity(0);
+        transform: scale(0.5);
+    }
+    20% {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    30% {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    40% {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    50% {
+        font-family: cursive;
+    }
+    60% {
+        font-family: "Elms Sans", sans-serif;
+    }
+}
+.nav-main {
     display: flex;
-    gap: 10px;
+    position: absolute;
+    height: 100%;
+    width: 11%;
+    justify-content: center;
+    font-family: var(--textfont);
+    font-weight: 900;
 }
 
-.logo {
-    background-color: white;
+
+.nav-main ul li{
+    list-style: none;
+}
+
+.nav-main ul li a {
+    text-decoration: none;
+    width: 130px;
+    height: 110px;
+    padding: 10px;
+    margin-bottom: 30px;
+    color: var(--textcolor);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s ease all;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.301);
+}
+
+.nav-main ul li a:hover {
+    transform: translateY(5px);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+    background-color: rgba(214, 173, 96, 0.12);
+    color: var(--accentcolor);
+}
+
+
+@keyframes main-intro {
+    0% {
+        transform: translateX(-190px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.nav-main ul li a h2 {
+    font-size: 15px;
+    width: 100%;
+
+}
+
+.nav-main ul li a img {
+    position: relative;
+    width: 30px;
+    height: auto;
+    top: -35px;
+    right: -5px;
+    align-self: flex-end;
+    justify-content: flex-start;
+    transform: rotate(45deg);
+    transition: 0.3s ease all;
+    filter: invert(1);
+}
+
+.nav-main ul li:hover a p {
+    text-decoration: underline;
+}
+
+
+.nav-main ul li:hover a img {
+    transform: rotate(90deg);
 }
