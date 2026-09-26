@@ -3,79 +3,502 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | David Barrientos</title>
+    <title>David Barrientos | Portafolio</title>
+    <meta name="description" content="Portafolio de David Barrientos, estudiante de desarrollo de software en el SENA (Medellín, Colombia): proyectos, habilidades e información de contacto.">
+    <meta name="theme-color" content="#e3001b">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-110 -110 220 220'%3E%3Cpolygon points='0,-92 26.5,-30 94,-24 42.5,17 57,82 0,49 -57,82 -42.5,17 -94,-24 -26.5,-30' fill='%23e3001b' stroke='%230d0d0d' stroke-width='14' stroke-linejoin='round'/%3E%3C/svg%3E">
     <script>
-        if (!sessionStorage.getItem('siteVisited')) {
-            document.documentElement.classList.add('initial-load');
-            sessionStorage.setItem('siteVisited', 'true');
-        }
+        (function () {
+            var root = document.documentElement;
+            root.classList.add('js');
+            if (!matchMedia('(prefers-reduced-motion: reduce)').matches) root.classList.add('motion');
+            // Estilo elegido en una visita anterior (P5R por defecto)
+            try {
+                if (localStorage.getItem('portfolio-theme') === 'glass') root.classList.add('theme-glass');
+            } catch (error) {}
+        })();
     </script>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Archivo+Black&family=Bangers&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Dela+Gothic+One&family=Rubik+Mono+One&family=Sora:wght@300..700&family=Syne:wght@600..800&display=swap">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/glass.css">
+    <script src="js/main.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="logo-main">
-            <a>David Barrientos.</a>
-        </div>
-        <nav class="nav-main">
-            <ul>
-                <li><a href="">
-                    <p>01</p>
-                    <img src="img/arrow-up-short.svg" alt="">
-                    <h2>Habilidades</h2>
-                </a></li>
-                <li><a href="projects.html">
-                    <p>02</p>
-                    <img src="img/arrow-up-short.svg" alt="">
-                    <h2>Proyectos</h2>
-                </a></li>
-                <li><a href="">
-                    <p>03</p>
-                    <img src="img/arrow-up-short.svg" alt="">
-                    <h2>Informacion</h2>
-                </a></li>
-                <li><a href="index.html">
-                    <p>04</p>
-                    <img src="img/arrow-up-short.svg" alt="">
-                    <h2>Sobre mi</h2>
-                </a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <article>
-                <p>
-                    Soy David, estudiante de desarrollo de software en el SENA, en Medellín, Colombia. Me dedico a construir aplicaciones web funcionales y bien pensadas, combinando conocimientos de frontend y backend para entregar soluciones completas, desde la interfaz hasta la base de datos.
-                    <br><br>
-Mi formación abarca lenguajes y tecnologías como HTML, CSS, JavaScript, PHP, Python, SQL, Django y ReactJS. Me interesa tanto el diseño de experiencias de usuario cuidadas como la lógica y estructura que sostienen una aplicación por dentro: la gestión de datos, la arquitectura del sistema y las buenas prácticas de desarrollo.
-<br><br>
-Soy una persona metódica y curiosa, que aprende constantemente y busca entender a fondo cada herramienta y cada problema antes de resolverlo. Actualmente me encuentro en búsqueda de una oportunidad de práctica o apadrinamiento donde pueda seguir desarrollando mis habilidades técnicas, aportar valor desde el primer día y crecer junto a un equipo de trabajo.
-                </p>
-                <img src="img/icon.jpg" alt="">
-            </article>
+
+    <!-- Estrellas reutilizables (estilo Persona 5 Royal) -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <defs>
+            <polygon id="star-path" points="0,-82 24.8,-26.2 85.6,-19.8 40.2,21.1 52.9,80.8 0,50.3 -52.9,80.8 -40.2,21.1 -85.6,-19.8 -24.8,-26.2"/>
+            <linearGradient id="glass-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#22d3ee"/>
+                <stop offset=".5" stop-color="#7b61ff"/>
+                <stop offset="1" stop-color="#ff4fd8"/>
+            </linearGradient>
+        </defs>
+        <symbol id="star-rings" viewBox="-200 -200 400 400">
+            <use href="#star-path" style="fill:none;stroke:var(--ring-a,#0d0d0d);stroke-width:84;stroke-linejoin:miter;stroke-miterlimit:8"/>
+            <use href="#star-path" style="fill:none;stroke:var(--ring-b,#fff);stroke-width:60;stroke-linejoin:miter;stroke-miterlimit:8"/>
+            <use href="#star-path" style="fill:none;stroke:var(--ring-a,#0d0d0d);stroke-width:36;stroke-linejoin:miter;stroke-miterlimit:8"/>
+            <use href="#star-path" style="fill:none;stroke:var(--ring-b,#fff);stroke-width:14;stroke-linejoin:miter;stroke-miterlimit:8"/>
+            <use href="#star-path" style="fill:var(--core,#0d0d0d)"/>
+        </symbol>
+        <symbol id="star-solid" viewBox="-110 -110 220 220">
+            <use href="#star-path" style="fill:currentColor;stroke:var(--ring-a,#0d0d0d);stroke-width:16;stroke-linejoin:miter"/>
+        </symbol>
+    </svg>
+
+    <!-- Fondo del estilo Glass: auroras de color, cuadrícula, luz del cursor y grano (oculto en P5R) -->
+    <div class="glass-bg" aria-hidden="true">
+        <span class="blob blob--1"></span>
+        <span class="blob blob--2"></span>
+        <span class="blob blob--3"></span>
+        <span class="blob blob--4"></span>
+        <span class="glass-grid"></span>
+        <span class="glass-spot"></span>
+        <span class="glass-noise"></span>
+    </div>
+
+    <main class="app">
+
+        <!-- ============ MENÚ PRINCIPAL ============ -->
+        <section class="screen screen-menu is-active" id="menu" data-screen="menu" aria-label="Menú principal">
+            <div class="menu-bg" aria-hidden="true">
+                <div class="halftone"></div>
+                <svg class="star star--dim ms-1"><use href="#star-rings"/></svg>
+                <svg class="star star--dim ms-2"><use href="#star-rings"/></svg>
+                <div class="menu-panel">
+                    <div class="menu-panel-fill sunburst">
+                        <svg class="star star--spin ms-3"><use href="#star-rings"/></svg>
+                        <svg class="star star--inv ms-4"><use href="#star-rings"/></svg>
+                        <svg class="star ms-5"><use href="#star-rings"/></svg>
+                        <svg class="star star--inv ms-6"><use href="#star-rings"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-pointer" aria-hidden="true">
+                <span class="pointer-edge"></span>
+                <span class="pointer-blade"></span>
+            </div>
+
+            <p class="calendar js-only" aria-hidden="true">
+                <span class="cal-status">Buscando práctica</span>
+                <span class="cal-date"><span class="cal-day">1</span><span class="cal-slash">/</span><span class="cal-month">1</span></span>
+                <span class="cal-weekday">LUN</span>
+                <span class="cal-phase">Tarde</span>
+            </p>
+
+            <header class="menu-title">
+                <h1 class="menu-name"><span data-ransom="title">David Barrientos</span></h1>
+                <p class="menu-sub">Portafolio · Desarrollo de software</p>
+            </header>
+
+            <nav class="menu-nav" aria-label="Secciones">
+                <ul class="menu-list">
+                    <li>
+                        <a class="menu-item tilt is-selected" href="#sobre-mi" data-jp="プロフィール">
+                            <span class="menu-no" aria-hidden="true">01</span>
+                            <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+                            <span class="menu-label" data-ransom="menu">Sobre mí</span>
+                            <span class="menu-desc">Quién soy, qué estudio y qué estoy buscando.</span>
+                            <svg class="menu-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="menu-item tilt" href="#proyectos" data-jp="プロジェクト">
+                            <span class="menu-no" aria-hidden="true">02</span>
+                            <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg>
+                            <span class="menu-label" data-ransom="menu">Proyectos</span>
+                            <span class="menu-desc">Tiendas, réplicas y plataformas que he construido.</span>
+                            <svg class="menu-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="menu-item tilt" href="#informacion" data-jp="情報">
+                            <span class="menu-no" aria-hidden="true">03</span>
+                            <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>
+                            <span class="menu-label" data-ransom="menu">Información</span>
+                            <span class="menu-desc">Datos de contacto y disponibilidad.</span>
+                            <svg class="menu-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="menu-item tilt" href="#habilidades" data-jp="スキル">
+                            <span class="menu-no" aria-hidden="true">04</span>
+                            <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+                            <span class="menu-label" data-ransom="menu">Habilidades</span>
+                            <span class="menu-desc">Lenguajes, frameworks y herramientas que manejo.</span>
+                            <svg class="menu-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="menu-index" aria-hidden="true"><span class="menu-index-num" data-ransom="num">01</span></div>
+
+            <div class="menu-help" aria-hidden="true">
+                <span class="menu-help-jp">プロフィール</span>
+                <p class="menu-help-text">Quién soy, qué estudio y qué estoy buscando.</p>
+            </div>
+
+            <p class="controls" aria-hidden="true">
+                <span><kbd>↑</kbd><kbd>↓</kbd> Mover</span>
+                <span><kbd>Enter</kbd> Elegir</span>
+            </p>
         </section>
+
+        <!-- ============ 01 · SOBRE MÍ ============ -->
+        <section class="screen screen-page screen-about" id="sobre-mi" data-screen="sobre-mi" aria-labelledby="title-about">
+            <div class="page-bg" aria-hidden="true">
+                <div class="halftone"></div>
+                <svg class="star star--dim star--spin ab-1"><use href="#star-rings"/></svg>
+                <svg class="star star--dim ab-2"><use href="#star-rings"/></svg>
+                <svg class="star ab-3"><use href="#star-rings"/></svg>
+            </div>
+
+            <a class="back magnetic" href="#menu"><kbd>Esc</kbd> Volver</a>
+
+            <header class="page-head enter" style="--d:0">
+                <span class="page-num" aria-hidden="true">01</span>
+                <h2 class="page-title" id="title-about" tabindex="-1"><span data-ransom="title">Sobre mí</span></h2>
+                <span class="page-jp" aria-hidden="true">プロフィール</span>
+            </header>
+
+            <div class="about">
+                <figure class="about-photo enter" style="--d:1">
+                    <span class="shard shard--white" aria-hidden="true"></span>
+                    <span class="shard shard--black" aria-hidden="true"></span>
+                    <div class="photo-frame tilt">
+                        <img src="img/icon.jpg" alt="Foto de David Barrientos" width="1121" height="1418" loading="lazy">
+                    </div>
+                    <figcaption class="nametag">
+                        <span class="nametag-name" data-ransom="title">David Barrientos</span>
+                        <span class="nametag-role">Medellín, Colombia · SENA</span>
+                    </figcaption>
+                </figure>
+
+                <div class="about-talk">
+                    <div class="dialog enter" style="--d:2">
+                        <span class="dialog-speaker">David</span>
+                        <p>Soy David, estudiante de desarrollo de software en el SENA, en Medellín, Colombia. Me dedico a construir aplicaciones web funcionales y bien pensadas, combinando conocimientos de frontend y backend para entregar soluciones completas, desde la interfaz hasta la base de datos.</p>
+                    </div>
+                    <div class="dialog enter" style="--d:3">
+                        <p>Mi formación abarca lenguajes y tecnologías como HTML, CSS, JavaScript, PHP, Python, SQL, Django y ReactJS. Me interesa tanto el diseño de experiencias de usuario cuidadas como la lógica y estructura que sostienen una aplicación por dentro: la gestión de datos, la arquitectura del sistema y las buenas prácticas de desarrollo.</p>
+                    </div>
+                    <div class="dialog enter" style="--d:4">
+                        <p>Soy una persona metódica y curiosa, que aprende constantemente y busca entender a fondo cada herramienta y cada problema antes de resolverlo. Actualmente me encuentro en búsqueda de una oportunidad de práctica o apadrinamiento donde pueda seguir desarrollando mis habilidades técnicas, aportar valor desde el primer día y crecer junto a un equipo de trabajo.</p>
+                        <span class="dialog-next" aria-hidden="true"></span>
+                    </div>
+
+                    <ul class="traits enter" style="--d:5" aria-label="Rasgos">
+                        <li><svg class="mini-star" aria-hidden="true"><use href="#star-solid"/></svg>Metódico</li>
+                        <li><svg class="mini-star" aria-hidden="true"><use href="#star-solid"/></svg>Curioso</li>
+                        <li><svg class="mini-star" aria-hidden="true"><use href="#star-solid"/></svg>Aprendizaje constante</li>
+                    </ul>
+
+                    <div class="actions enter" style="--d:6">
+                        <a class="cta magnetic" href="#proyectos"><span>Ver proyectos</span></a>
+                        <a class="cta cta--light magnetic" href="#informacion"><span>Contacto</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 02 · PROYECTOS ============ -->
+        <section class="screen screen-page screen-projects" id="proyectos" data-screen="proyectos" aria-labelledby="title-projects">
+            <div class="page-bg" aria-hidden="true">
+                <div class="page-panel-wrap">
+                    <div class="page-panel sunburst">
+                        <svg class="star star--spin pr-1"><use href="#star-rings"/></svg>
+                        <svg class="star star--inv pr-2"><use href="#star-rings"/></svg>
+                    </div>
+                </div>
+                <div class="halftone"></div>
+                <svg class="star star--dim pr-3"><use href="#star-rings"/></svg>
+            </div>
+
+            <a class="back magnetic" href="#menu"><kbd>Esc</kbd> Volver</a>
+
+            <header class="page-head enter" style="--d:0">
+                <span class="page-num" aria-hidden="true">02</span>
+                <h2 class="page-title" id="title-projects" tabindex="-1"><span data-ransom="title">Proyectos</span></h2>
+                <span class="page-jp" aria-hidden="true">プロジェクト</span>
+            </header>
+
+            <div class="projects" data-list style="--count:3">
+
+                <div class="project is-selected" data-entry>
+                    <button class="project-tab enter" style="--d:1" type="button" data-tab aria-controls="project-fresh" aria-expanded="true">
+                        <span class="project-no">01</span>
+                        <span class="project-name">Fresh Clothes</span>
+                        <span class="project-mini">HTML · CSS · PHP</span>
+                    </button>
+                    <article class="project-detail" id="project-fresh">
+                        <div class="project-media tilt">
+                            <img src="img/freshclothes.PNG" alt="Página principal de la tienda Fresh Clothes" width="1337" height="637" loading="lazy">
+                            <video data-src="video/freshclothes.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+                        </div>
+                        <div class="project-copy">
+                            <p class="project-count" aria-hidden="true">01 / 03</p>
+                            <h3 class="project-title" data-ransom="title">Fresh Clothes</h3>
+                            <p class="project-role">Líder de grupo · Media Técnica</p>
+                            <p class="project-desc">Proyecto final de la Media Técnica en el cual fui el líder de grupo. Tienda de ropa deportiva totalmente funcional, utilizando HTML, CSS y PHP.</p>
+                            <ul class="stack" aria-label="Tecnologías">
+                                <li><img src="img/html.png" alt="" width="512" height="512" loading="lazy">HTML</li>
+                                <li><img src="img/css.png" alt="" width="512" height="512" loading="lazy">CSS</li>
+                                <li><img src="img/php.png" alt="" width="512" height="512" loading="lazy">PHP</li>
+                            </ul>
+                            <a class="cta magnetic" href="https://drive.google.com/file/d/1ciSOqJ3m5eWIG-d-UHbX5A_g_2-QccJk/view?usp=sharing" target="_blank" rel="noopener"><span>Ver proyecto</span></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="project" data-entry>
+                    <button class="project-tab enter" style="--d:2" type="button" data-tab aria-controls="project-abb" aria-expanded="false">
+                        <span class="project-no">02</span>
+                        <span class="project-name">ABB David</span>
+                        <span class="project-mini">HTML · CSS</span>
+                    </button>
+                    <article class="project-detail" id="project-abb">
+                        <div class="project-media tilt">
+                            <img src="img/abbdavid.PNG" alt="Portafolio ABB David, réplica de cydstumpel.nl" width="1334" height="617" loading="lazy">
+                            <video data-src="video/abbdavid.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+                        </div>
+                        <div class="project-copy">
+                            <p class="project-count" aria-hidden="true">02 / 03</p>
+                            <h3 class="project-title" data-ransom="title">ABB David</h3>
+                            <p class="project-role">Formación SENA</p>
+                            <p class="project-desc">Proyecto realizado en la formación del SENA. Réplica casi exacta del portafolio cydstumpel.nl utilizando HTML y CSS.</p>
+                            <ul class="stack" aria-label="Tecnologías">
+                                <li><img src="img/html.png" alt="" width="512" height="512" loading="lazy">HTML</li>
+                                <li><img src="img/css.png" alt="" width="512" height="512" loading="lazy">CSS</li>
+                            </ul>
+                            <a class="cta magnetic" href="https://drive.google.com/file/d/1IFJ9yCZZvAOHyjKjZ4aKQh6a28E4UfUO/view?usp=sharing" target="_blank" rel="noopener"><span>Ver proyecto</span></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="project" data-entry>
+                    <button class="project-tab enter" style="--d:3" type="button" data-tab aria-controls="project-aurora" aria-expanded="false">
+                        <span class="project-no">03</span>
+                        <span class="project-name">Aurora Viajes</span>
+                        <span class="project-mini">React · Node JS · Tailwind CSS</span>
+                    </button>
+                    <article class="project-detail" id="project-aurora">
+                        <div class="project-media tilt">
+                            <img src="img/auroraviajes.png" alt="Página de inicio de Aurora Viajes" width="1895" height="1079" loading="lazy">
+                            <video data-src="video/auroraviajes.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+                        </div>
+                        <div class="project-copy">
+                            <p class="project-count" aria-hidden="true">03 / 03</p>
+                            <h3 class="project-title" data-ransom="title">Aurora Viajes</h3>
+                            <p class="project-role">CRUD completo</p>
+                            <p class="project-desc">Proyecto para agendar viajes fácilmente, con CRUD totalmente funcional y un buen diseño. Contiene: reserva de viajes, inicio de sesión, panel de administrador / usuario / cliente, mensajes de contacto y más.</p>
+                            <ul class="stack" aria-label="Tecnologías">
+                                <li><img src="img/react.png" alt="" width="512" height="512" loading="lazy">React</li>
+                                <li><img src="img/nodejs.png" alt="" width="512" height="512" loading="lazy">Node JS</li>
+                                <li><img src="img/tailwindcss.webp" alt="" width="960" height="587" loading="lazy">Tailwind CSS</li>
+                            </ul>
+                            <a class="cta magnetic" href="https://drive.google.com/file/d/1gSocmwlJ5MFDQn3MMCX8YmLi29-hNHBQ/view?usp=sharing" target="_blank" rel="noopener"><span>Ver proyecto</span></a>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ 03 · INFORMACIÓN ============ -->
+        <section class="screen screen-page screen-info" id="informacion" data-screen="informacion" aria-labelledby="title-info">
+            <div class="page-bg" aria-hidden="true">
+                <div class="page-panel-wrap">
+                    <div class="page-panel sunburst">
+                        <svg class="star star--spin in-1"><use href="#star-rings"/></svg>
+                        <svg class="star star--inv in-2"><use href="#star-rings"/></svg>
+                        <svg class="star in-3"><use href="#star-rings"/></svg>
+                    </div>
+                </div>
+                <div class="halftone"></div>
+            </div>
+
+            <a class="back magnetic" href="#menu"><kbd>Esc</kbd> Volver</a>
+
+            <header class="page-head enter" style="--d:0">
+                <span class="page-num" aria-hidden="true">03</span>
+                <h2 class="page-title" id="title-info" tabindex="-1"><span data-ransom="title">Información</span></h2>
+                <span class="page-jp" aria-hidden="true">情報</span>
+            </header>
+
+            <div class="info">
+                <article class="calling-card tilt enter" style="--d:1" aria-labelledby="card-title">
+                    <svg class="star card-star" aria-hidden="true"><use href="#star-rings"/></svg>
+                    <h3 class="card-title" id="card-title" data-ransom="title">Carta de presentación</h3>
+                    <p class="card-greeting">A quien corresponda:</p>
+                    <p class="card-body">Soy <mark>David Barrientos</mark>, estudiante de desarrollo de software en el SENA. Estoy buscando una oportunidad de <mark class="mark-light">práctica o apadrinamiento</mark> para seguir desarrollando mis habilidades técnicas, aportar valor desde el primer día y crecer junto a un equipo de trabajo.</p>
+                    <p class="card-sign">— D. B.</p>
+                </article>
+
+                <div class="dossier enter" style="--d:2">
+                    <dl class="facts">
+                        <div class="fact"><dt><span>Nombre</span></dt><dd><span>David Barrientos</span></dd></div>
+                        <div class="fact"><dt><span>Ubicación</span></dt><dd><span>Medellín, Colombia</span></dd></div>
+                        <div class="fact"><dt><span>Formación</span></dt><dd><span>Desarrollo de software · SENA</span></dd></div>
+                        <div class="fact"><dt><span>Estado</span></dt><dd><span><svg class="mini-star mini-star--pulse" aria-hidden="true"><use href="#star-solid"/></svg>Buscando práctica o apadrinamiento</span></dd></div>
+                    </dl>
+
+                    <ul class="links">
+                        <li><a class="cta magnetic" href="https://github.com/davidabb2000" target="_blank" rel="noopener"><span>GitHub</span></a></li>
+                        <li><a class="cta cta--light magnetic" href="#proyectos"><span>Ver proyectos</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 04 · HABILIDADES ============ -->
+        <section class="screen screen-page screen-skills" id="habilidades" data-screen="habilidades" aria-labelledby="title-skills">
+            <div class="page-bg" aria-hidden="true">
+                <div class="halftone"></div>
+                <svg class="star star--dim star--spin sk-1"><use href="#star-rings"/></svg>
+                <svg class="star star--dim sk-2"><use href="#star-rings"/></svg>
+                <svg class="star sk-3"><use href="#star-rings"/></svg>
+            </div>
+
+            <a class="back magnetic" href="#menu"><kbd>Esc</kbd> Volver</a>
+
+            <header class="page-head enter" style="--d:0">
+                <span class="page-num" aria-hidden="true">04</span>
+                <h2 class="page-title" id="title-skills" tabindex="-1"><span data-ransom="title">Habilidades</span></h2>
+                <span class="page-jp" aria-hidden="true">スキル</span>
+            </header>
+
+            <div class="skills">
+                <section class="skill-group enter" style="--d:1" aria-labelledby="group-front">
+                    <h3 class="skill-group-title" id="group-front" data-ransom="tag">Frontend</h3>
+                    <ul class="skill-list">
+                        <li class="skill shine" style="--brand: #e34f26">
+                            <span class="skill-icon"><img src="img/html.png" alt="" width="512" height="512" loading="lazy"></span>
+                            <span class="skill-body">
+                                <span class="skill-name">HTML</span>
+                                <span class="skill-desc">Estructura y semántica de cada página.</span>
+                                <span class="skill-used">Usado en: Fresh Clothes · ABB David</span>
+                            </span>
+                        </li>
+                        <li class="skill shine" style="--brand: #2f7bf5">
+                            <span class="skill-icon"><img src="img/css.png" alt="" width="512" height="512" loading="lazy"></span>
+                            <span class="skill-body">
+                                <span class="skill-name">CSS</span>
+                                <span class="skill-desc">Diseño, maquetación, animaciones y responsive.</span>
+                                <span class="skill-used">Usado en: Fresh Clothes · ABB David</span>
+                            </span>
+                        </li>
+                        <li class="skill shine" style="--brand: #f7df1e">
+                            <span class="skill-icon">
+                                <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#f7df1e"/><text x="58" y="56" text-anchor="end" font-family="Archivo Black, Arial Black, sans-serif" font-size="27" fill="#0d0d0d">JS</text></svg>
+                            </span>
+                            <span class="skill-body">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-desc">Interactividad y lógica en el navegador.</span>
+                                <span class="skill-used">Formación SENA</span>
+                            </span>
+                        </li>
+                        <li class="skill shine" style="--brand: #61dafb">
+                            <span class="skill-icon"><img src="img/react.png" alt="" width="512" height="512" loading="lazy"></span>
+                            <span class="skill-body">
+                                <span class="skill-name">React</span>
+                                <span class="skill-desc">Interfaces por componentes con estado.</span>
+                                <span class="skill-used">Usado en: Aurora Viajes</span>
+                            </span>
+                        </li>
+                        <li class="skill shine" style="--brand: #38bdf8">
+                            <span class="skill-icon"><img src="img/tailwindcss.webp" alt="" width="960" height="587" loading="lazy"></span>
+                            <span class="skill-body">
+                                <span class="skill-name">Tailwind CSS</span>
+                                <span class="skill-desc">Estilos rápidos con clases utilitarias.</span>
+                                <span class="skill-used">Usado en: Aurora Viajes</span>
+                            </span>
+                        </li>
+                    </ul>
+                </section>
+
+                <div class="skill-column">
+                    <section class="skill-group enter" style="--d:2" aria-labelledby="group-back">
+                        <h3 class="skill-group-title" id="group-back" data-ransom="tag">Backend</h3>
+                        <ul class="skill-list">
+                            <li class="skill shine" style="--brand: #8892bf">
+                                <span class="skill-icon"><img src="img/php.png" alt="" width="512" height="512" loading="lazy"></span>
+                                <span class="skill-body">
+                                    <span class="skill-name">PHP</span>
+                                    <span class="skill-desc">Lógica del lado del servidor.</span>
+                                    <span class="skill-used">Usado en: Fresh Clothes</span>
+                                </span>
+                            </li>
+                            <li class="skill shine" style="--brand: #6cc24a">
+                                <span class="skill-icon"><img src="img/nodejs.png" alt="" width="512" height="512" loading="lazy"></span>
+                                <span class="skill-body">
+                                    <span class="skill-name">Node JS</span>
+                                    <span class="skill-desc">APIs y servidor con JavaScript.</span>
+                                    <span class="skill-used">Usado en: Aurora Viajes</span>
+                                </span>
+                            </li>
+                            <li class="skill shine" style="--brand: #4b8bbe">
+                                <span class="skill-icon"><img src="img/python.png" alt="" width="960" height="960" loading="lazy"></span>
+                                <span class="skill-body">
+                                    <span class="skill-name">Python</span>
+                                    <span class="skill-desc">Lógica de programación y scripts.</span>
+                                    <span class="skill-used">Formación SENA</span>
+                                </span>
+                            </li>
+                            <li class="skill shine" style="--brand: #44b78b">
+                                <span class="skill-icon">
+                                    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#0c4b33"/><text x="32" y="43" text-anchor="middle" font-family="Barlow, Arial, sans-serif" font-weight="700" font-size="30" fill="#fff">dj</text></svg>
+                                </span>
+                                <span class="skill-body">
+                                    <span class="skill-name">Django</span>
+                                    <span class="skill-desc">Framework web de Python.</span>
+                                    <span class="skill-used">Formación SENA</span>
+                                </span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="skill-group enter" style="--d:3" aria-labelledby="group-data">
+                        <h3 class="skill-group-title" id="group-data" data-ransom="tag">Bases de datos</h3>
+                        <ul class="skill-list">
+                            <li class="skill shine" style="--brand: #0ea5e9">
+                                <span class="skill-icon">
+                                    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#00618a"/><g fill="none" stroke="#fff" stroke-width="4.5"><ellipse cx="32" cy="16" rx="17" ry="6"/><path d="M15 16v32c0 3.3 7.6 6 17 6s17-2.7 17-6V16"/><path d="M15 27c0 3.3 7.6 6 17 6s17-2.7 17-6M15 38c0 3.3 7.6 6 17 6s17-2.7 17-6"/></g></svg>
+                                </span>
+                                <span class="skill-body">
+                                    <span class="skill-name">SQL</span>
+                                    <span class="skill-desc">Bases de datos relacionales y consultas.</span>
+                                    <span class="skill-used">Formación SENA</span>
+                                </span>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <script>
-        document.querySelectorAll('a[href]').forEach(link => {
-            const href = link.getAttribute('href');
-            if (!href || href.startsWith('#') || link.target === '_blank') return;
-            link.addEventListener('click', event => {
-                event.preventDefault();
-                const main = document.querySelector('main');
-                if (main) {
-                    main.classList.add('page-exit');
-                }
-                setTimeout(() => {
-                    window.location.href = href;
-                }, 600);
-            });
-        });
-    </script>
+    <!-- Botón para cambiar de estilo (P5R ⇄ Glass); la elección se guarda en el navegador -->
+    <button class="theme-toggle js-only" type="button" role="switch" aria-checked="false" aria-label="Estilo glassmorphism" title="Cambiar estilo">
+        <span class="theme-toggle-track" aria-hidden="true">
+            <span class="theme-toggle-thumb"></span>
+            <span class="theme-toggle-option theme-toggle-option--p5"><svg viewBox="-110 -110 220 220"><use href="#star-path"/></svg>P5R</span>
+            <span class="theme-toggle-option theme-toggle-option--glass"><svg viewBox="0 0 24 24"><path d="M12 2.5l1.9 6.1 6.1 1.9-6.1 1.9L12 18.5l-1.9-6.1L4 10.5l6.1-1.9z"/><path d="M19 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>Glass</span>
+        </span>
+    </button>
+
+    <!-- Transición entre pantallas -->
+    <div class="wipe" aria-hidden="true">
+        <span class="wipe-band wipe-band--white"></span>
+        <span class="wipe-band wipe-band--red"></span>
+        <span class="wipe-band wipe-band--black"></span>
+        <span class="wipe-title" data-ransom="title"></span>
+    </div>
+
 </body>
 </html>
